@@ -3,8 +3,14 @@ const app = express();
 const users = require('./routes/users.js');
 const posts = require('./routes/posts.js');
 
+app.get('/getcookies',(req,res)=>{
+    res.cookie('greet','namaste');
+    res.cookie('madeIn','India');
+    res.send('we send you a cookie!');
+});
+
 app.get('/',(req,res)=>{
-    console.log('I am root');
+    res.send('I am root');
 });
 
 app.use('/users',users);
