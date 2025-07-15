@@ -111,28 +111,7 @@ body{
     height: 30vh;
 }
 
-/* .btns{
-    display: flex;
-} */
-
 .show-card{
     padding-left: 0;
     padding-right: 0;
-}
-
-.btns {
-    display: flex;
-    gap: 1rem;
-    width: 50%;
-    /* Adds space between buttons */
-    justify-content: center;
-    /* Optional: center the buttons horizontally */
-    margin-top: 1rem;
-}
-
-.edit-btn,
-.delete-btn {
-    min-width: 100px;
-    /* Optional: consistent width */
-    text-align: center; 
 }
