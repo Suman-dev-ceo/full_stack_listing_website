@@ -14,8 +14,11 @@ router
     .get(wrapAsync(listingController.index))
     .post(isLoggedIn, validateListing, upload.single('listing[image][url]'),  wrapAsync(listingController.createListing));
    
-//NEW Route
-router.get('/new',isLoggedIn, listingController.rederNewform);
+//NEW Route , Show specific category and Show search  result
+router
+    .get('/new',isLoggedIn, listingController.rederNewform)
+    .get('/search', wrapAsync(listingController.showSearchByCountry))
+    .get('/category/:name',wrapAsync(listingController.showCategoryListing));
 
 //Show, Update and Destroy Routes
 router

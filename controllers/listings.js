@@ -75,3 +75,32 @@ module.exports.destroyListing = async(req,res)=>{
     req.flash('success','Listing Deleted!');
     res.redirect('/listings');
 };
+
+module.exports.showSearchByCountry = async(req,res)=>{
+    let {country} = req.query;
+    if(!country || country.trim() === ''){
+        return res.redirect('/listings');
+    }
+
+    let countryListings = await Listing.find(
+        {country: { $regex: new RegExp(`^${country.trim()}$`, 'i') }}
+    );
+    if(countryListings.length!=0){
+        res.render('listings/searchByCountry.ejs',{countryListings});
+    }else {
+        req.flash('error','There are no listings avaliable for this country');
+        res.redirect('/listings');
+    }
+};
+
+module.exports.showCategoryListing = async(req,res)=>{
+    let {name} = req.params;
+
+    let categoryListings = await Listing.find({category: name});
+    if(categoryListings.length != 0){
+        res.render('listings/showCAtegory.ejs',{categoryListings});
+    }else{
+        req.flash('error','No such listings avaliable for this category');
+        res.redirect('/listings');
+    }
+}
