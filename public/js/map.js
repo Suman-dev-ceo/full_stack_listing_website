@@ -11,7 +11,7 @@ mapboxgl.accessToken = mapToken;
         .setLngLat(listing.geometry.coordinates) //Listing.geometry.coordinates
         .setPopup(new mapboxgl.Popup({offset: 20})
         .setHTML(
-            `<h4>${listing.location}</h4><p>Exact location will be provided after booking</p>`
+            `<h4>${listing.title}</h4><p>Exact location will be provided after booking</p>`
         ))
         .addTo(map);
         
